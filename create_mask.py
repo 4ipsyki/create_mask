@@ -33,7 +33,7 @@ save_flag=False
 try:
     # testing if first frame exists and initializing the mask_prov array
     im=fabio.open(main_dir+frame_flatf[0])
-    img=im.data
+    img=im.data.astype("float32")
     sz=im.shape
     mask_prov=np.zeros([len(frame_flatf),len(std_scale),sz[0],sz[1]])
 except:
@@ -43,7 +43,7 @@ except:
 for frame_idx in range(0,len(frame_flatf)):
     # loading frame
     im=fabio.open(main_dir+frame_flatf[frame_idx])
-    img=im.data
+    img=im.data.astype("float32")
 
     # dimension of the frame
     sz=im.shape
